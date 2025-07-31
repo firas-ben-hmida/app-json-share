@@ -49,7 +49,7 @@ export default function Navbar() {
         </div>
         {!isSignedIn ? (
           <SignInButton mode='modal'>
-            <Button variant='outline'>Sign in</Button>
+            <Button variant='outline' disabled={!isLoaded}>Sign in</Button>
           </SignInButton>
         ) : (
           <UserButton />
