@@ -47,13 +47,15 @@ export default function Navbar() {
             </Link>
           </nav>
         </div>
-        {!isSignedIn ? (
-          <SignInButton mode='modal'>
-            <Button variant='outline' disabled={!isLoaded}>Sign in</Button>
-          </SignInButton>
-        ) : (
-          <UserButton />
-        )}
+        <div>
+          {isSignedIn ? (
+            <UserButton />
+          ) : (
+            <SignInButton mode='modal'>
+              <Button variant='outline'>Sign in</Button>
+            </SignInButton>
+          )}
+        </div>
       </div>
     </div>
   );
