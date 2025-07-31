@@ -1,10 +1,10 @@
 import { ExternalLinkIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { SignedIn, SignedOut, SignInButton, UserButton, useAuth } from '@clerk/nextjs';
+import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
 
 export default function Navbar() {
-  const { isLoaded } = useAuth();
+  const { isLoaded, isSignedIn } = useUser();
 
   if (!isLoaded) {
     return (
@@ -47,14 +47,13 @@ export default function Navbar() {
             </Link>
           </nav>
         </div>
-        <SignedOut>
+        {!isSignedIn ? (
           <SignInButton mode='modal'>
             <Button variant='outline'>Sign in</Button>
           </SignInButton>
-        </SignedOut>
-        <SignedIn>
+        ) : (
           <UserButton />
-        </SignedIn>
+        )}
       </div>
     </div>
   );
